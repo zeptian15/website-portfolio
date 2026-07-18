@@ -1,514 +1,608 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Septian Ricky Maulana · Backend Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Newsreader:opsz,wght@6..72,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>
-/* Hallmark · pre-emit critique: P5 H4 E5 S5 R4 V5 */
-/* Hallmark · macrostructure: Split Studio · tone: editorial · anchor hue: 150 (forest green) */
-/* Hallmark · genre: editorial · theme: Studio · enrichment: none · nav: N9 · footer: Ft4 */
-/* Hallmark · contrast: pass (40–41) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57) */
-/* Data source: cv.pdf · populated 2026-07-18 */
-/* Diversification: differs from Long Document+Cobalt on macrostructure, display style, accent hue, nav, footer */
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Septian Ricky Maulana · Backend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Newsreader:opsz,wght@6..72,400&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Hallmark · pre-emit critique: P5 H4 E5 S5 R4 V5 */
+      /* Hallmark · macrostructure: Split Studio · tone: editorial · anchor hue: 150 (forest green) */
+      /* Hallmark · genre: editorial · theme: Studio · enrichment: none · nav: N9 · footer: Ft4 */
+      /* Hallmark · contrast: pass (40–41) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57) */
+      /* Data source: cv.pdf · populated 2026-07-18 */
+      /* Diversification: differs from Long Document+Cobalt on macrostructure, display style, accent hue, nav, footer */
 
-/* ── Tokens ── */
-:root {
-  /* Color — Studio (editorial, forest-green accent) */
-  --color-paper:       oklch(96% 0.008 95);
-  --color-paper-2:     oklch(92% 0.010 95);
-  --color-rule:        oklch(82% 0.008 95);
-  --color-neutral:     oklch(50% 0.006 90);
-  --color-muted:       oklch(35% 0.008 85);
-  --color-ink:         oklch(16% 0.012 80);
-  --color-accent:      oklch(52% 0.155 150);
-  --color-accent-soft: oklch(52% 0.155 150 / 0.07);
-  --color-focus:       oklch(58% 0.155 150);
+      /* ── Tokens ── */
+      :root {
+        /* Color — Studio (editorial, forest-green accent) */
+        --color-paper: oklch(96% 0.008 95);
+        --color-paper-2: oklch(92% 0.01 95);
+        --color-rule: oklch(82% 0.008 95);
+        --color-neutral: oklch(50% 0.006 90);
+        --color-muted: oklch(35% 0.008 85);
+        --color-ink: oklch(16% 0.012 80);
+        --color-accent: oklch(52% 0.155 150);
+        --color-accent-soft: oklch(52% 0.155 150 / 0.07);
+        --color-focus: oklch(58% 0.155 150);
 
-  /* Typography */
-  --font-display:  "Fraunces", ui-serif, Georgia, serif;
-  --font-body:     "Newsreader", ui-serif, Georgia, serif;
-  --font-outlier:  "JetBrains Mono", ui-monospace, monospace;
+        /* Typography */
+        --font-display: "Fraunces", ui-serif, Georgia, serif;
+        --font-body: "Newsreader", ui-serif, Georgia, serif;
+        --font-outlier: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Scale — major third (1.25) */
-  --text-xs:   0.64rem;
-  --text-sm:   0.8rem;
-  --text-base: 1rem;
-  --text-md:   1.25rem;
-  --text-lg:   1.5625rem;
-  --text-xl:   1.9531rem;
-  --text-2xl:  2.4414rem;
-  --text-3xl:  3.0518rem;
-  --text-display: clamp(2.5rem, 5vw + 0.5rem, 4.5rem);
+        /* Scale — major third (1.25) */
+        --text-xs: 0.64rem;
+        --text-sm: 0.8rem;
+        --text-base: 1rem;
+        --text-md: 1.25rem;
+        --text-lg: 1.5625rem;
+        --text-xl: 1.9531rem;
+        --text-2xl: 2.4414rem;
+        --text-3xl: 3.0518rem;
+        --text-display: clamp(2.5rem, 5vw + 0.5rem, 4.5rem);
 
-  /* Spacing — 4pt scale */
-  --space-3xs: 0.125rem;
-  --space-2xs: 0.25rem;
-  --space-xs:  0.5rem;
-  --space-sm:  0.75rem;
-  --space-md:  1rem;
-  --space-lg:  1.5rem;
-  --space-xl:  2.5rem;
-  --space-2xl: 4rem;
-  --space-3xl: 6rem;
+        /* Spacing — 4pt scale */
+        --space-3xs: 0.125rem;
+        --space-2xs: 0.25rem;
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2.5rem;
+        --space-2xl: 4rem;
+        --space-3xl: 6rem;
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-pill: 999px;
+        /* Radii */
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-pill: 999px;
 
-  /* Rules */
-  --rule-hair: 0.5px;
-  --rule-thin: 1px;
+        /* Rules */
+        --rule-hair: 0.5px;
+        --rule-thin: 1px;
 
-  /* Easings */
-  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+        /* Easings */
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+        --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* Durations */
-  --dur-micro: 120ms;
-  --dur-short: 220ms;
-  --dur-long:  420ms;
+        /* Durations */
+        --dur-micro: 120ms;
+        --dur-short: 220ms;
+        --dur-long: 420ms;
 
-  /* Page gutter */
-  --page-gutter: clamp(1.5rem, 4vw, 3rem);
-}
+        /* Page gutter */
+        --page-gutter: clamp(1.5rem, 4vw, 3rem);
+      }
 
-/* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { overflow-x: clip; }
-body { overflow-x: clip; }
+      /* ── Reset ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        overflow-x: clip;
+      }
+      body {
+        overflow-x: clip;
+      }
 
-/* ── Base ── */
-body {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: 1.6;
-  color: var(--color-ink);
-  background: var(--color-paper);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+      /* ── Base ── */
+      body {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: 1.6;
+        color: var(--color-ink);
+        background: var(--color-paper);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-/* ── N9 Edge-aligned minimal nav ── */
-.nav-edge {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-lg) var(--page-gutter);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--color-paper);
-}
-.nav-edge__wordmark {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--text-lg);
-  letter-spacing: -0.02em;
-  color: var(--color-ink);
-  text-decoration: none;
-}
-.nav-edge__cta {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--color-ink);
-  text-decoration: none;
-  padding: var(--space-xs) var(--space-md);
-  border: var(--rule-thin) solid var(--color-rule);
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-  transition: background-color var(--dur-micro) var(--ease-out),
-              color var(--dur-micro) var(--ease-out);
-}
-.nav-edge__cta:hover { background: var(--color-ink); color: var(--color-paper); }
-.nav-edge__cta:active { transform: translateY(1px); }
-.nav-edge__cta:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+      /* ── N9 Edge-aligned minimal nav ── */
+      .nav-edge {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-lg) var(--page-gutter);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--color-paper);
+      }
+      .nav-edge__wordmark {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: var(--text-lg);
+        letter-spacing: -0.02em;
+        color: var(--color-ink);
+        text-decoration: none;
+      }
+      .nav-edge__cta {
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        color: var(--color-ink);
+        text-decoration: none;
+        padding: var(--space-xs) var(--space-md);
+        border: var(--rule-thin) solid var(--color-rule);
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+        transition:
+          background-color var(--dur-micro) var(--ease-out),
+          color var(--dur-micro) var(--ease-out);
+      }
+      .nav-edge__cta:hover {
+        background: var(--color-ink);
+        color: var(--color-paper);
+      }
+      .nav-edge__cta:active {
+        transform: translateY(1px);
+      }
+      .nav-edge__cta:focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+      }
 
-/* ── Split Studio — diptych rows ── */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-2xl);
-  padding: var(--space-2xl) var(--page-gutter);
-  border-top: var(--rule-hair) solid var(--color-rule);
-  align-items: start;
-}
-.split:first-of-type { border-top: none; padding-block-start: var(--space-3xl); }
+      /* ── Split Studio — diptych rows ── */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-2xl);
+        padding: var(--space-2xl) var(--page-gutter);
+        border-top: var(--rule-hair) solid var(--color-rule);
+        align-items: start;
+      }
+      .split:first-of-type {
+        border-top: none;
+        padding-block-start: var(--space-3xl);
+      }
 
-.split__text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-.split__aside {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
+      .split__text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+      .split__aside {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+      }
 
-/* Alternating direction — even rows swap sides */
-.split:nth-child(even) .split__text { order: 1; }
-.split:nth-child(even) .split__aside { order: 0; }
+      /* Alternating direction — even rows swap sides */
+      .split:nth-child(even) .split__text {
+        order: 1;
+      }
+      .split:nth-child(even) .split__aside {
+        order: 0;
+      }
 
-/* ── Split content styling ── */
-.split__label {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--text-xs);
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
+      /* ── Split content styling ── */
+      .split__label {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: var(--text-xs);
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
 
-.split__heading {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--text-2xl);
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  color: var(--color-ink);
-  overflow-wrap: anywhere;
-  min-width: 0;
-}
+      .split__heading {
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: var(--text-2xl);
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+        color: var(--color-ink);
+        overflow-wrap: anywhere;
+        min-width: 0;
+      }
 
-.split__heading--xl {
-  font-size: var(--text-display);
-  font-weight: 700;
-  line-height: 1.05;
-}
+      .split__heading--xl {
+        font-size: var(--text-display);
+        font-weight: 700;
+        line-height: 1.05;
+      }
 
-.split__body {
-  font-size: var(--text-md);
-  color: var(--color-muted);
-  max-width: 48ch;
-  line-height: 1.6;
-}
+      .split__body {
+        font-size: var(--text-md);
+        color: var(--color-muted);
+        max-width: 48ch;
+        line-height: 1.6;
+      }
 
-.split__meta {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: var(--text-sm);
-  color: var(--color-neutral);
-}
+      .split__meta {
+        font-family: var(--font-body);
+        font-style: italic;
+        font-size: var(--text-sm);
+        color: var(--color-neutral);
+      }
 
-/* ── Tech tags ── */
-.tech-tag {
-  display: inline-block;
-  font-family: var(--font-outlier);
-  font-size: var(--text-xs);
-  color: var(--color-accent);
-  background: var(--color-accent-soft);
-  padding: var(--space-3xs) var(--space-xs);
-  border-radius: var(--radius-sm);
-  margin-inline-end: var(--space-2xs);
-  margin-block-end: var(--space-2xs);
-  white-space: nowrap;
-}
-.tech-group { margin-block-end: var(--space-md); }
-.tech-group__label {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--text-sm);
-  color: var(--color-ink);
-  margin-block-end: var(--space-xs);
-}
+      /* ── Tech tags ── */
+      .tech-tag {
+        display: inline-block;
+        font-family: var(--font-outlier);
+        font-size: var(--text-xs);
+        color: var(--color-accent);
+        background: var(--color-accent-soft);
+        padding: var(--space-3xs) var(--space-xs);
+        border-radius: var(--radius-sm);
+        margin-inline-end: var(--space-2xs);
+        margin-block-end: var(--space-2xs);
+        white-space: nowrap;
+      }
+      .tech-group {
+        margin-block-end: var(--space-md);
+      }
+      .tech-group__label {
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: var(--text-sm);
+        color: var(--color-ink);
+        margin-block-end: var(--space-xs);
+      }
 
-/* ── Contact links ── */
-.contact-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  margin-block-start: var(--space-md);
-}
-.contact-list a {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-family: var(--font-body);
-  font-size: var(--text-md);
-  color: var(--color-ink);
-  text-decoration: none;
-  padding: var(--space-xs) 0;
-  border-bottom: var(--rule-hair) solid var(--color-rule);
-  transition: border-color var(--dur-micro) var(--ease-out),
-              color var(--dur-micro) var(--ease-out);
-  white-space: nowrap;
-}
-.contact-list a:hover { color: var(--color-accent); border-color: var(--color-accent); }
-.contact-list a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+      /* ── Contact links ── */
+      .contact-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+        margin-block-start: var(--space-md);
+      }
+      .contact-list a {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-xs);
+        font-family: var(--font-body);
+        font-size: var(--text-md);
+        color: var(--color-ink);
+        text-decoration: none;
+        padding: var(--space-xs) 0;
+        border-bottom: var(--rule-hair) solid var(--color-rule);
+        transition:
+          border-color var(--dur-micro) var(--ease-out),
+          color var(--dur-micro) var(--ease-out);
+        white-space: nowrap;
+      }
+      .contact-list a:hover {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+      .contact-list a:focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+      }
 
-/* ── Ft4 Dense colophon footer ── */
-.foot-dense {
-  padding: var(--space-3xl) var(--page-gutter) var(--space-xl);
-  border-top: var(--rule-thin) solid var(--color-ink);
-  margin-block-start: var(--space-2xl);
-}
-.foot-dense__text {
-  font-family: var(--font-outlier);
-  font-size: var(--text-xs);
-  color: var(--color-neutral);
-  line-height: 1.7;
-  max-width: 72ch;
-}
-.foot-dense__text strong {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--text-sm);
-  color: var(--color-ink);
-  display: block;
-  margin-block-end: var(--space-xs);
-}
+      /* ── Ft4 Dense colophon footer ── */
+      .foot-dense {
+        padding: var(--space-3xl) var(--page-gutter) var(--space-xl);
+        border-top: var(--rule-thin) solid var(--color-ink);
+        margin-block-start: var(--space-2xl);
+      }
+      .foot-dense__text {
+        font-family: var(--font-outlier);
+        font-size: var(--text-xs);
+        color: var(--color-neutral);
+        line-height: 1.7;
+        max-width: 72ch;
+      }
+      .foot-dense__text strong {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: var(--text-sm);
+        color: var(--color-ink);
+        display: block;
+        margin-block-end: var(--space-xs);
+      }
 
-/* ── Reduced motion ── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+      /* ── Reduced motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
 
-/* ── Mobile — Split Studio collapse ── */
-@media (max-width: 60rem) {
-  .split {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-    padding: var(--space-xl) var(--page-gutter);
-  }
-  .split:nth-child(even) .split__text,
-  .split:nth-child(even) .split__aside { order: 0; }
-  .split__heading--xl { font-size: clamp(2rem, 6vw, 3rem); }
-  .split__body { font-size: var(--text-base); }
-}
-@media (max-width: 40rem) {
-  .nav-edge { padding: var(--space-md) var(--page-gutter); }
-  .nav-edge__wordmark { font-size: var(--text-md); }
-  .split { padding: var(--space-lg) var(--page-gutter); gap: var(--space-lg); }
-  .split:first-of-type { padding-block-start: var(--space-2xl); }
-  .split__heading { font-size: var(--text-xl); }
-  .split__heading--xl { font-size: clamp(1.75rem, 6vw, 2.5rem); }
-}
-</style>
-</head>
-<body>
+      /* ── Mobile — Split Studio collapse ── */
+      @media (max-width: 60rem) {
+        .split {
+          grid-template-columns: 1fr;
+          gap: var(--space-xl);
+          padding: var(--space-xl) var(--page-gutter);
+        }
+        .split:nth-child(even) .split__text,
+        .split:nth-child(even) .split__aside {
+          order: 0;
+        }
+        .split__heading--xl {
+          font-size: clamp(2rem, 6vw, 3rem);
+        }
+        .split__body {
+          font-size: var(--text-base);
+        }
+      }
+      @media (max-width: 40rem) {
+        .nav-edge {
+          padding: var(--space-md) var(--page-gutter);
+        }
+        .nav-edge__wordmark {
+          font-size: var(--text-md);
+        }
+        .split {
+          padding: var(--space-lg) var(--page-gutter);
+          gap: var(--space-lg);
+        }
+        .split:first-of-type {
+          padding-block-start: var(--space-2xl);
+        }
+        .split__heading {
+          font-size: var(--text-xl);
+        }
+        .split__heading--xl {
+          font-size: clamp(1.75rem, 6vw, 2.5rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav-edge">
+      <a href="#" class="nav-edge__wordmark">Septian Ricky Maulana</a>
+      <a href="#contact" class="nav-edge__cta">Contact</a>
+    </header>
 
-<header class="nav-edge">
-  <a href="#" class="nav-edge__wordmark">Septian Ricky Maulana</a>
-  <a href="#contact" class="nav-edge__cta">Contact</a>
-</header>
+    <main>
+      <!-- Hero split -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Backend Developer</span>
+          <h1 class="split__heading split__heading--xl">
+            Systems that stay up. Code that ships clean.
+          </h1>
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            5+ years building backend systems for fintech, POS platforms,
+            payment gateways, and enterprise learning. Based in Bandung,
+            Indonesia. I work where the hard problems
+            live&thinsp;&mdash;&thinsp;below the API surface, inside the message
+            broker, at the database query that&rsquo;s running too slow.
+          </p>
+        </div>
+      </section>
 
-<main>
+      <!-- About split -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">About</span>
+          <h2 class="split__heading">Vocational roots, production reps.</h2>
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Graduated from <strong>SMK Negeri 4 Bandung</strong> (Software
+            Engineering, 2020) and went straight into the industry. What began
+            as an internship building a digital library platform grew into a
+            career spanning regulatory compliance, equity crowdfunding, social
+            e-commerce, POS infrastructure, and enterprise learning.
+          </p>
+          <p class="split__body">
+            I&rsquo;ve worn the architect hat, the mentor hat, and the
+            product-owner hat. Each one taught me something the others
+            couldn&rsquo;t. I care about correctness, observability, and leaving
+            a codebase slightly better than I found it.
+          </p>
+        </div>
+      </section>
 
-  <!-- Hero split -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Backend Developer</span>
-      <h1 class="split__heading split__heading--xl">Systems that stay up. Code that ships clean.</h1>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        5+ years building backend systems for fintech, POS platforms, payment gateways,
-        and enterprise learning. Based in Bandung, Indonesia. I work where the hard
-        problems live&thinsp;&mdash;&thinsp;below the API surface, inside the message
-        broker, at the database query that&rsquo;s running too slow.
+      <!-- Work 01 — myDigiLearn -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Work · 01</span>
+          <h2 class="split__heading">myDigiLearn</h2>
+          <span class="split__meta"
+            >Backend Developer · Dec 2024&thinsp;&ndash;&thinsp;Present</span
+          >
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Core backend across a multi-framework platform (Laravel, Golang,
+            NodeJS). Led third-party integrations with LinkedIn Learning, Zoom,
+            and MS Teams. Architected the live-event system for Telkom Click,
+            handling 10,000+ concurrent users during a national corporate event.
+            Built Research HUB for internal collaboration.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work 02 — Motapos -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Work · 02</span>
+          <h2 class="split__heading">Motapos</h2>
+          <span class="split__meta"
+            >Backend Developer · Jun 2024&thinsp;&ndash;&thinsp;Oct 2024</span
+          >
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Developed and maintained the POS backend in Golang. Delivered new
+            features expanding application functionality, responsive
+            troubleshooting in production, and code optimization to keep
+            transaction processing fast and stable under real-world retail load.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work 03 — Majoo Indonesia -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Work · 03</span>
+          <h2 class="split__heading">Majoo Indonesia</h2>
+          <span class="split__meta"
+            >Backend Developer · Feb 2022&thinsp;&ndash;&thinsp;Feb 2024</span
+          >
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Owned the POS backend on PHP CodeIgniter, then led the migration to
+            a Golang microservices architecture. Designed event-driven
+            background processing with Kafka for async data pipelines. Built
+            dedicated services for large-scale data migration. Focused on
+            stability and response times for real-time business operations.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work 04 — Sagara Technology -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Work · 04</span>
+          <h2 class="split__heading">Sagara Technology</h2>
+          <span class="split__meta"
+            >Backend &amp; Mobile Developer · May 2020&thinsp;&ndash;&thinsp;Feb
+            2022</span
+          >
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Built the Regulatory Compliance System (RCS) backend on NodeJS in
+            partnership with hukumonline.com. Developed the InvestX equity
+            crowdfunding mobile app in Flutter. Delivered the BRIdge payment
+            gateway dashboard (Flutter Web) and BayaRI social e-commerce
+            platform in collaboration with Bank BRI. Built the Sagara Hackathon
+            backend in Golang. Served as internship mentor and acted as Product
+            Owner for Agrinesia.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work 05 — Puslitbang Tekmira -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Work · 05</span>
+          <h2 class="split__heading">Puslitbang Tekmira</h2>
+          <span class="split__meta"
+            >Backend &amp; Mobile Developer (Internship) · Oct
+            2019&thinsp;&ndash;&thinsp;Dec 2019</span
+          >
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Built Read Book, an internal digital library platform (Laravel +
+            Kotlin), digitizing research documents and improving staff access
+            efficiency. Developed Progress, a real-time document monitoring
+            system with full-stack ownership (Laravel + Kotlin), deployed
+            directly to internal servers.
+          </p>
+        </div>
+      </section>
+
+      <!-- Tech stack split -->
+      <section class="split">
+        <div class="split__text">
+          <span class="split__label">Tech stack</span>
+          <h2 class="split__heading">Tools I reach for daily.</h2>
+          <p class="split__body" style="font-size: var(--text-sm)">
+            The real stack is knowing <em>when</em> to use
+            something&thinsp;&mdash;&thinsp;and when not to.
+          </p>
+        </div>
+        <div class="split__aside">
+          <div class="tech-group">
+            <p class="tech-group__label">Languages &amp; runtimes</p>
+            <span class="tech-tag">Golang</span>
+            <span class="tech-tag">NodeJS</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">Dart</span>
+          </div>
+          <div class="tech-group">
+            <p class="tech-group__label">Frameworks</p>
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">CodeIgniter</span>
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Gin</span>
+            <span class="tech-tag">Fiber</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">Nest JS</span>
+          </div>
+          <div class="tech-group">
+            <p class="tech-group__label">Data &amp; messaging</p>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Kafka</span>
+            <span class="tech-tag">RabbitMQ</span>
+            <span class="tech-tag">Socket.IO</span>
+          </div>
+          <div class="tech-group">
+            <p class="tech-group__label">Infrastructure &amp; tools</p>
+            <span class="tech-tag">GitLab</span>
+            <span class="tech-tag">Github</span>
+            <span class="tech-tag">Bitbucket</span>
+            <span class="tech-tag">JIRA</span>
+            <span class="tech-tag">Trello</span>
+            <span class="tech-tag">ClickUp</span>
+            <span class="tech-tag">Docker</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact split -->
+      <section class="split" id="contact">
+        <div class="split__text">
+          <span class="split__label">Contact</span>
+          <h2 class="split__heading">
+            Let&rsquo;s build something that stays up.
+          </h2>
+        </div>
+        <div class="split__aside">
+          <p class="split__body">
+            Open to backend roles where systems thinking
+            matters&thinsp;&mdash;&thinsp;platform teams, distributed systems,
+            event-driven architectures, or anywhere the hard problems live below
+            the API surface.
+          </p>
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:zeptian15@gmail.com">zeptian15@gmail.com</a>
+            </li>
+            <li>
+              <a href="https://github.com/zeptian15" rel="noopener"
+                >github.com/zeptian15</a
+              >
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/zeptian15" rel="noopener"
+                >linkedin.com/in/zeptian15</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot-dense">
+      <p class="foot-dense__text">
+        <strong>Septian Ricky Maulana</strong>
+        Backend Developer · Bandung, Indonesia · +62 851-5697-1957<br />
+        Built with Fraunces, Newsreader &amp; JetBrains Mono. Hallmark v1.1.0 ·
+        Studio theme.<br />
+        &copy; 2026
       </p>
-    </div>
-  </section>
-
-  <!-- About split -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">About</span>
-      <h2 class="split__heading">Vocational roots, production reps.</h2>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Graduated from <strong>SMK Negeri 4 Bandung</strong> (Software Engineering, 2020)
-        and went straight into the industry. What began as an internship building a
-        digital library platform grew into a career spanning regulatory compliance,
-        equity crowdfunding, social e-commerce, POS infrastructure, and enterprise
-        learning.
-      </p>
-      <p class="split__body">
-        I&rsquo;ve worn the architect hat, the mentor hat, and the product-owner
-        hat. Each one taught me something the others couldn&rsquo;t. I care about
-        correctness, observability, and leaving a codebase slightly better than
-        I found it.
-      </p>
-    </div>
-  </section>
-
-  <!-- Work 01 — myDigiLearn -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Work · 01</span>
-      <h2 class="split__heading">myDigiLearn</h2>
-      <span class="split__meta">Backend Developer · Dec 2024&thinsp;&ndash;&thinsp;Present</span>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Core backend across a multi-framework platform (Laravel, Golang, NodeJS).
-        Led third-party integrations with LinkedIn Learning, Zoom, and MS Teams.
-        Architected the live-event system for Telkom Click, handling 10,000+
-        concurrent users during a national corporate event. Built Research HUB
-        for internal collaboration.
-      </p>
-    </div>
-  </section>
-
-  <!-- Work 02 — Motapos -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Work · 02</span>
-      <h2 class="split__heading">Motapos</h2>
-      <span class="split__meta">Backend Developer · Jun 2024&thinsp;&ndash;&thinsp;Oct 2024</span>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Developed and maintained the POS backend in Golang. Delivered new features
-        expanding application functionality, responsive troubleshooting in production,
-        and code optimization to keep transaction processing fast and stable under
-        real-world retail load.
-      </p>
-    </div>
-  </section>
-
-  <!-- Work 03 — Majoo Indonesia -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Work · 03</span>
-      <h2 class="split__heading">Majoo Indonesia</h2>
-      <span class="split__meta">Backend Developer · Feb 2022&thinsp;&ndash;&thinsp;Feb 2024</span>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Owned the POS backend on PHP CodeIgniter, then led the migration to a
-        Golang microservices architecture. Designed event-driven background
-        processing with Kafka for async data pipelines. Built dedicated services
-        for large-scale data migration. Focused on stability and response times
-        for real-time business operations.
-      </p>
-    </div>
-  </section>
-
-  <!-- Work 04 — Sagara Technology -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Work · 04</span>
-      <h2 class="split__heading">Sagara Technology</h2>
-      <span class="split__meta">Backend &amp; Mobile Developer · May 2020&thinsp;&ndash;&thinsp;Feb 2022</span>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Built the Regulatory Compliance System (RCS) backend on NodeJS in partnership
-        with hukumonline.com. Developed the InvestX equity crowdfunding mobile app
-        in Flutter. Delivered the BRIdge payment gateway dashboard (Flutter Web) and
-        BayaRI social e-commerce platform in collaboration with Bank BRI. Built the
-        Sagara Hackathon backend in Golang. Served as internship mentor and acted as
-        Product Owner for Agrinesia.
-      </p>
-    </div>
-  </section>
-
-  <!-- Work 05 — Puslitbang Tekmira -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Work · 05</span>
-      <h2 class="split__heading">Puslitbang Tekmira</h2>
-      <span class="split__meta">Backend &amp; Mobile Developer (Internship) · Oct 2019&thinsp;&ndash;&thinsp;Dec 2019</span>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Built Read Book, an internal digital library platform (Laravel + Kotlin),
-        digitizing research documents and improving staff access efficiency. Developed
-        Progress, a real-time document monitoring system with full-stack ownership
-        (Laravel + Kotlin), deployed directly to internal servers.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tech stack split -->
-  <section class="split">
-    <div class="split__text">
-      <span class="split__label">Tech stack</span>
-      <h2 class="split__heading">Tools I reach for daily.</h2>
-      <p class="split__body" style="font-size:var(--text-sm)">
-        The real stack is knowing <em>when</em> to use something&thinsp;&mdash;&thinsp;and
-        when not to.
-      </p>
-    </div>
-    <div class="split__aside">
-      <div class="tech-group">
-        <p class="tech-group__label">Languages &amp; runtimes</p>
-        <span class="tech-tag">Golang</span>
-        <span class="tech-tag">NodeJS</span>
-        <span class="tech-tag">PHP</span>
-        <span class="tech-tag">Kotlin</span>
-      </div>
-      <div class="tech-group">
-        <p class="tech-group__label">Frameworks</p>
-        <span class="tech-tag">Laravel</span>
-        <span class="tech-tag">CodeIgniter</span>
-        <span class="tech-tag">Flutter</span>
-      </div>
-      <div class="tech-group">
-        <p class="tech-group__label">Data &amp; messaging</p>
-        <span class="tech-tag">MySQL</span>
-        <span class="tech-tag">PostgreSQL</span>
-        <span class="tech-tag">MongoDB</span>
-        <span class="tech-tag">Redis</span>
-        <span class="tech-tag">Kafka</span>
-        <span class="tech-tag">RabbitMQ</span>
-        <span class="tech-tag">Socket.IO</span>
-      </div>
-      <div class="tech-group">
-        <p class="tech-group__label">Infrastructure &amp; tools</p>
-        <span class="tech-tag">Docker</span>
-        <span class="tech-tag">GitLab</span>
-        <span class="tech-tag">Bitbucket</span>
-        <span class="tech-tag">JIRA</span>
-        <span class="tech-tag">Trello</span>
-        <span class="tech-tag">ClickUp</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact split -->
-  <section class="split" id="contact">
-    <div class="split__text">
-      <span class="split__label">Contact</span>
-      <h2 class="split__heading">Let&rsquo;s build something that stays up.</h2>
-    </div>
-    <div class="split__aside">
-      <p class="split__body">
-        Open to backend roles where systems thinking matters&thinsp;&mdash;&thinsp;platform
-        teams, distributed systems, event-driven architectures, or anywhere the hard
-        problems live below the API surface.
-      </p>
-      <ul class="contact-list">
-        <li><a href="mailto:zeptian15@gmail.com">zeptian15@gmail.com</a></li>
-        <li><a href="https://github.com/zeptian15" rel="noopener">github.com/zeptian15</a></li>
-        <li><a href="https://linkedin.com/in/zeptian15" rel="noopener">linkedin.com/in/zeptian15</a></li>
-      </ul>
-    </div>
-  </section>
-
-</main>
-
-<footer class="foot-dense">
-  <p class="foot-dense__text">
-    <strong>Septian Ricky Maulana</strong>
-    Backend Developer · Bandung, Indonesia · +62 851-5697-1957<br>
-    Built with Fraunces, Newsreader &amp; JetBrains Mono. Hallmark v1.1.0 · Studio theme.<br>
-    &copy; 2026
-  </p>
-</footer>
-
-</body>
+    </footer>
+  </body>
 </html>
