@@ -156,16 +156,42 @@
 
       /* ── Split Studio — diptych rows ── */
       .split {
+        position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--space-2xl);
         padding: var(--space-2xl) var(--page-gutter);
-        border-top: var(--rule-hair) solid var(--color-rule);
         align-items: start;
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity var(--dur-long) var(--ease-out),
+          transform var(--dur-long) var(--ease-out);
+      }
+      .split::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--rule-hair);
+        background: var(--color-rule);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--dur-long) var(--ease-out);
+      }
+      .split.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .split.is-visible::before {
+        transform: scaleX(1);
       }
       .split:first-of-type {
-        border-top: none;
         padding-block-start: var(--space-3xl);
+      }
+      .split:first-of-type::before {
+        display: none;
       }
 
       .split__text {
@@ -240,6 +266,39 @@
         margin-inline-end: var(--space-2xs);
         margin-block-end: var(--space-2xs);
         white-space: nowrap;
+        opacity: 0;
+        transform: translateY(4px);
+        transition:
+          opacity var(--dur-short) var(--ease-out),
+          transform var(--dur-short) var(--ease-out);
+      }
+      .split.is-visible .tech-tag {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .split.is-visible .tech-tag:hover {
+        transform: translateY(-1px);
+      }
+      .tech-tag:nth-of-type(1) {
+        transition-delay: 0ms;
+      }
+      .tech-tag:nth-of-type(2) {
+        transition-delay: 30ms;
+      }
+      .tech-tag:nth-of-type(3) {
+        transition-delay: 60ms;
+      }
+      .tech-tag:nth-of-type(4) {
+        transition-delay: 90ms;
+      }
+      .tech-tag:nth-of-type(5) {
+        transition-delay: 120ms;
+      }
+      .tech-tag:nth-of-type(6) {
+        transition-delay: 150ms;
+      }
+      .tech-tag:nth-of-type(7) {
+        transition-delay: 180ms;
       }
       .tech-group {
         margin-block-end: var(--space-md);
@@ -261,6 +320,7 @@
         margin-block-start: var(--space-md);
       }
       .contact-list a {
+        position: relative;
         display: inline-flex;
         align-items: center;
         gap: var(--space-xs);
@@ -275,9 +335,24 @@
           color var(--dur-micro) var(--ease-out);
         white-space: nowrap;
       }
+      .contact-list a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: var(--rule-thin);
+        background: var(--color-accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--dur-short) var(--ease-out);
+      }
       .contact-list a:hover {
         color: var(--color-accent);
         border-color: var(--color-accent);
+      }
+      .contact-list a:hover::after {
+        transform: scaleX(1);
       }
       .contact-list a:focus-visible {
         outline: 2px solid var(--color-focus);
@@ -306,6 +381,32 @@
         margin-block-end: var(--space-xs);
       }
 
+      /* ── Motion — hero stagger ── */
+      .split:first-of-type .split__label,
+      .split:first-of-type .split__heading,
+      .split:first-of-type .split__aside {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity var(--dur-long) var(--ease-out),
+          transform var(--dur-long) var(--ease-out);
+      }
+      .split:first-of-type.is-visible .split__label {
+        transition-delay: 0ms;
+      }
+      .split:first-of-type.is-visible .split__heading {
+        transition-delay: 90ms;
+      }
+      .split:first-of-type.is-visible .split__aside {
+        transition-delay: 180ms;
+      }
+      .split:first-of-type.is-visible .split__label,
+      .split:first-of-type.is-visible .split__heading,
+      .split:first-of-type.is-visible .split__aside {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       /* ── Reduced motion ── */
       @media (prefers-reduced-motion: reduce) {
         *,
@@ -314,6 +415,15 @@
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
+        }
+        .split,
+        .split::before,
+        .split__label,
+        .split__heading,
+        .split__aside,
+        .tech-tag {
+          opacity: 1 !important;
+          transform: none !important;
         }
       }
 
@@ -357,6 +467,19 @@
         }
       }
     </style>
+    <noscript>
+      <style>
+        .split,
+        .split::before,
+        .split__label,
+        .split__heading,
+        .split__aside,
+        .tech-tag {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <header class="nav-edge">
@@ -603,5 +726,37 @@
         &copy; 2026
       </p>
     </footer>
+
+    <script>
+      (function () {
+        var sections = document.querySelectorAll(".split");
+        var reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          sections.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+        );
+
+        sections.forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>
