@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-07-18",
+    "macrostructure": "Split Studio",
+    "theme": "Studio",
+    "theme_axes": "light / high-contrast-serif / chromatic-green",
+    "enrichment": "none",
+    "brief": "Septian Ricky Maulana · backend developer portfolio · split studio redesign"
+  },
+  {
+    "date": "2026-07-18",
+    "macrostructure": "Long Document",
+    "theme": "Cobalt",
+    "theme_axes": "light / grotesk-sans / cool",
+    "enrichment": "none",
+    "brief": "Zep · backend developer portfolio · about, work history, tech stack, contact"
+  }
+]

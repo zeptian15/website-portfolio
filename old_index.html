@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Septian Ricky Maulana · Backend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Hallmark · pre-emit critique: P4 H4 E5 S4 R5 V5 */
+      /* Hallmark · macrostructure: Long Document · tone: technical · anchor hue: 255 (cobalt) */
+      /* Hallmark · genre: modern-minimal · theme: Cobalt · enrichment: none · nav: N5 · footer: Ft5 */
+      /* Hallmark · contrast: pass (40–41) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57) */
+      /* Data source: cv.pdf · populated 2026-07-18 */
+
+      /* ── Tokens ── */
+      :root {
+        /* Color — Cobalt (cool dev-tool register) */
+        --color-paper: oklch(97% 0.004 252);
+        --color-paper-2: oklch(93% 0.005 250);
+        --color-rule: oklch(85% 0.006 252);
+        --color-neutral: oklch(55% 0.005 250);
+        --color-muted: oklch(40% 0.005 245);
+        --color-ink: oklch(18% 0.008 255);
+        --color-accent: oklch(55% 0.19 260);
+        --color-accent-soft: oklch(55% 0.19 260 / 0.08);
+        --color-focus: oklch(60% 0.18 255);
+        --shadow-pill: 0 8px 24px -12px oklch(0% 0 0 / 0.12);
+
+        /* Typography */
+        --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+        --font-outlier: "JetBrains Mono", ui-monospace, monospace;
+
+        /* Scale — major third (1.25) */
+        --text-xs: 0.64rem;
+        --text-sm: 0.8rem;
+        --text-base: 1rem;
+        --text-md: 1.25rem;
+        --text-lg: 1.5625rem;
+        --text-xl: 1.9531rem;
+        --text-2xl: 2.4414rem;
+        --text-3xl: 3.0518rem;
+        --text-display: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+
+        /* Spacing — 4pt scale */
+        --space-3xs: 0.125rem;
+        --space-2xs: 0.25rem;
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2.5rem;
+        --space-2xl: 4rem;
+        --space-3xl: 6rem;
+
+        /* Radii */
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-pill: 999px;
+
+        /* Rules */
+        --rule-hair: 0.5px;
+
+        /* Easings */
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+        --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+        /* Durations */
+        --dur-micro: 120ms;
+        --dur-short: 220ms;
+
+        /* Z-index */
+        --z-sticky: 200;
+
+        /* Page gutter */
+        --page-gutter: clamp(1rem, 4vw, 2rem);
+      }
+
+      /* ── Reset ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        overflow-x: clip;
+      }
+      body {
+        overflow-x: clip;
+      }
+
+      /* ── Base ── */
+      body {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: 1.65;
+        color: var(--color-ink);
+        background: var(--color-paper);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── N5 Floating pill nav ── */
+      .nav-pill {
+        position: fixed;
+        inset: var(--space-md) auto auto 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-lg);
+        padding: 0.5rem 0.875rem;
+        background: color-mix(in oklch, var(--color-paper) 82%, transparent);
+        backdrop-filter: blur(14px) saturate(120%);
+        -webkit-backdrop-filter: blur(14px) saturate(120%);
+        border: var(--rule-hair) solid var(--color-rule);
+        border-radius: var(--radius-pill);
+        box-shadow: var(--shadow-pill);
+        z-index: var(--z-sticky);
+      }
+      .nav-pill__wordmark {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: var(--text-md);
+        letter-spacing: -0.025em;
+        color: var(--color-ink);
+        text-decoration: none;
+      }
+      .nav-pill__links {
+        display: flex;
+        gap: var(--space-sm);
+        list-style: none;
+      }
+      .nav-pill__links a {
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--color-muted);
+        text-decoration: none;
+        padding: var(--space-2xs) var(--space-xs);
+        border-radius: var(--radius-sm);
+        transition: color var(--dur-micro) var(--ease-out);
+        white-space: nowrap;
+      }
+      .nav-pill__links a:hover,
+      .nav-pill__links a:focus-visible {
+        color: var(--color-ink);
+      }
+      .nav-pill__links a:focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+      }
+      .nav-pill__cta {
+        font-family: var(--font-body);
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--color-paper);
+        background: var(--color-ink);
+        padding: var(--space-2xs) var(--space-sm);
+        border-radius: var(--radius-pill);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background-color var(--dur-micro) var(--ease-out);
+      }
+      .nav-pill__cta:hover {
+        background: var(--color-accent);
+      }
+      .nav-pill__cta:active {
+        transform: translateY(1px);
+      }
+      .nav-pill__cta:focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+      }
+
+      /* ── Prose (Long Document) ── */
+      .prose {
+        max-width: 62ch;
+        margin: 0 auto;
+        padding: var(--space-3xl) var(--page-gutter) var(--space-2xl);
+      }
+      .prose > * + * {
+        margin-block-start: var(--space-md);
+      }
+
+      .prose .lede {
+        font-size: var(--text-lg);
+        line-height: 1.55;
+        color: var(--color-muted);
+        margin-block-start: 0;
+      }
+
+      .prose h2 {
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: var(--text-xl);
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+        color: var(--color-ink);
+        margin-block-start: var(--space-2xl);
+        margin-block-end: 0;
+        overflow-wrap: anywhere;
+        min-width: 0;
+      }
+
+      .prose h2::after {
+        content: "";
+        display: block;
+        width: 2.5rem;
+        height: 2px;
+        background: var(--color-accent);
+        margin-block-start: var(--space-xs);
+      }
+
+      .prose p {
+        max-width: 60ch;
+        color: var(--color-muted);
+      }
+
+      .prose a {
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color var(--dur-micro) var(--ease-out);
+      }
+      .prose a:hover {
+        color: var(--color-ink);
+      }
+      .prose a:focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      /* ── Work history entry ── */
+      .work-entry {
+        padding-block: var(--space-md);
+        border-bottom: var(--rule-hair) solid var(--color-rule);
+      }
+      .work-entry:last-of-type {
+        border-bottom: none;
+      }
+      .work-entry__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        margin-block-end: var(--space-2xs);
+      }
+      .work-entry__role {
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: var(--text-md);
+        letter-spacing: -0.015em;
+        color: var(--color-ink);
+      }
+      .work-entry__when {
+        font-family: var(--font-outlier);
+        font-size: var(--text-sm);
+        color: var(--color-neutral);
+      }
+      .work-entry__company {
+        font-weight: 500;
+        color: var(--color-ink);
+      }
+      .work-entry__desc {
+        font-size: var(--text-sm);
+        color: var(--color-neutral);
+        max-width: 55ch;
+      }
+
+      /* ── Tech stack inline labels ── */
+      .tech-tag {
+        display: inline-block;
+        font-family: var(--font-outlier);
+        font-size: var(--text-xs);
+        color: var(--color-accent);
+        background: var(--color-accent-soft);
+        padding: var(--space-3xs) var(--space-xs);
+        border-radius: var(--radius-sm);
+        margin-inline-end: var(--space-2xs);
+        margin-block-end: var(--space-2xs);
+        white-space: nowrap;
+      }
+
+      /* ── Contact links ── */
+      .contact-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        margin-block-start: var(--space-md);
+      }
+      .contact-list a {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2xs);
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        color: var(--color-accent);
+        text-decoration: none;
+        font-weight: 500;
+        padding: var(--space-xs) var(--space-sm);
+        border: var(--rule-hair) solid var(--color-rule);
+        border-radius: var(--radius-md);
+        transition:
+          background-color var(--dur-micro) var(--ease-out),
+          border-color var(--dur-micro) var(--ease-out);
+        white-space: nowrap;
+      }
+      .contact-list a:hover {
+        background: var(--color-ink);
+        color: var(--color-paper);
+        border-color: var(--color-ink);
+      }
+      .contact-list a:focus-visible {
+        outline: 2px solid var(--color-focus);
+        outline-offset: 3px;
+      }
+
+      /* ── Ft5 Statement footer ── */
+      .foot-stmt {
+        max-width: 62ch;
+        margin: 0 auto;
+        padding: var(--space-2xl) var(--page-gutter) var(--space-xl);
+      }
+      .foot-stmt__line {
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        max-width: 28ch;
+        color: var(--color-ink);
+      }
+      .foot-stmt__meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        padding-block-start: var(--space-md);
+        margin-block-start: var(--space-lg);
+        border-top: var(--rule-hair) solid var(--color-rule);
+        font-size: var(--text-sm);
+        color: var(--color-neutral);
+      }
+      .foot-stmt__meta .wordmark {
+        font-family: var(--font-display);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-ink);
+      }
+
+      /* ── Reduced motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* ── Mobile — N5 collapse ── */
+      @media (max-width: 40rem) {
+        .nav-pill {
+          inset: var(--space-sm) auto auto 50%;
+          padding: 0.5rem 0.75rem;
+          gap: var(--space-sm);
+        }
+        .nav-pill__links {
+          display: none;
+        }
+        .nav-pill__cta {
+          font-size: var(--text-xs);
+          padding: var(--space-2xs) var(--space-xs);
+        }
+        .work-entry__header {
+          flex-direction: column;
+        }
+        .prose {
+          padding-block-start: var(--space-2xl);
+        }
+        .prose h2 {
+          font-size: var(--text-lg);
+        }
+        .prose .lede {
+          font-size: var(--text-md);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="#" class="nav-pill__wordmark">SRM</a>
+      <ul class="nav-pill__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+      <a href="#contact" class="nav-pill__cta">Contact</a>
+    </nav>
+
+    <article class="prose">
+      <p class="lede">
+        Backend developer with 5+ years building systems that handle real
+        load&thinsp;&mdash;&thinsp;POS platforms, payment gateways, compliance
+        engines, and live-event infrastructure serving 10,000+ concurrent users.
+      </p>
+
+      <p>
+        Based in <strong>Bandung, Indonesia</strong>. I work across the stack
+        that matters when things get real&thinsp;&mdash;&thinsp;Golang, NodeJS,
+        PHP, message brokers, and relational databases. My instinct runs toward
+        distributed systems, clean architecture, and knowing why something broke
+        before reaching for the fix.
+      </p>
+
+      <h2 id="about">About</h2>
+
+      <p>
+        I started with a vocational degree in software engineering from
+        <strong>SMK Negeri 4 Bandung</strong> and went straight into the
+        industry. What began as an internship building a digital library
+        platform turned into a career spanning fintech, POS systems, e-commerce,
+        regulatory compliance, and enterprise learning platforms.
+      </p>
+
+      <p>
+        I care about systems that stay up under load, APIs that don&rsquo;t
+        surprise their consumers, and teams that ship with confidence.
+        I&rsquo;ve worn the architect hat, the mentor hat, and the product-owner
+        hat&thinsp;&mdash;&thinsp;each one taught me something the others
+        couldn&rsquo;t.
+      </p>
+
+      <p>
+        When I&rsquo;m not at a terminal, I&rsquo;m probably mentoring junior
+        developers, or exploring new Go patterns.
+      </p>
+
+      <h2 id="work">Work history</h2>
+
+      <div class="work-entry">
+        <div class="work-entry__header">
+          <span class="work-entry__role">Backend Developer</span>
+          <span class="work-entry__when"
+            >Dec 2024&thinsp;&ndash;&thinsp;Present</span
+          >
+        </div>
+        <p class="work-entry__desc">
+          <span class="work-entry__company">myDigiLearn</span
+          >&thinsp;&mdash;&thinsp; Core backend across a multi-framework
+          platform (Laravel, Golang, NodeJS). Led third-party integrations with
+          LinkedIn Learning, Zoom, and MS Teams. Architected the live-event
+          system for Telkom Click, handling 10,000+ concurrent users during a
+          national corporate event. Built Research HUB for internal
+          collaboration.
+        </p>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-entry__header">
+          <span class="work-entry__role">Backend Developer</span>
+          <span class="work-entry__when"
+            >Jun 2024&thinsp;&ndash;&thinsp;Oct 2024</span
+          >
+        </div>
+        <p class="work-entry__desc">
+          <span class="work-entry__company">Motapos</span
+          >&thinsp;&mdash;&thinsp; Developed and maintained the POS backend in
+          Golang. Delivered new features expanding application functionality,
+          responsive troubleshooting in production, and code optimization to
+          keep transaction processing fast and stable under real-world retail
+          load.
+        </p>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-entry__header">
+          <span class="work-entry__role">Backend Developer</span>
+          <span class="work-entry__when"
+            >Feb 2022&thinsp;&ndash;&thinsp;Feb 2024</span
+          >
+        </div>
+        <p class="work-entry__desc">
+          <span class="work-entry__company">Majoo Indonesia</span
+          >&thinsp;&mdash;&thinsp; Owned the POS backend on PHP CodeIgniter,
+          then led the migration to a Golang microservices architecture.
+          Designed event-driven background processing with Kafka for async data
+          pipelines. Built dedicated services for large-scale data migration.
+          Focused on stability and response times for real-time business
+          operations.
+        </p>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-entry__header">
+          <span class="work-entry__role">Backend &amp; Mobile Developer</span>
+          <span class="work-entry__when"
+            >May 2020&thinsp;&ndash;&thinsp;Feb 2022</span
+          >
+        </div>
+        <p class="work-entry__desc">
+          <span class="work-entry__company">Sagara Technology</span
+          >&thinsp;&mdash;&thinsp; Built the Regulatory Compliance System (RCS)
+          backend on NodeJS in partnership with hukumonline.com. Developed the
+          InvestX equity crowdfunding mobile app in Flutter. Delivered the
+          BRIdge payment gateway dashboard (Flutter Web) and BayaRI social
+          e-commerce platform in collaboration with Bank BRI. Built the Sagara
+          Hackathon backend in Golang. Served as internship mentor and acted as
+          Product Owner for Agrinesia.
+        </p>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-entry__header">
+          <span class="work-entry__role"
+            >Backend &amp; Mobile Developer &mdash; Internship</span
+          >
+          <span class="work-entry__when"
+            >Oct 2019&thinsp;&ndash;&thinsp;Dec 2019</span
+          >
+        </div>
+        <p class="work-entry__desc">
+          <span class="work-entry__company">Puslitbang Tekmira</span
+          >&thinsp;&mdash;&thinsp; Built Read Book, an internal digital library
+          platform (Laravel + Kotlin), digitizing research documents and
+          improving staff access efficiency. Developed Progress, a real-time
+          document monitoring system with full-stack ownership (Laravel +
+          Kotlin), deployed directly to internal servers.
+        </p>
+      </div>
+
+      <h2 id="stack">Tech stack</h2>
+
+      <p>
+        Tools I reach for daily. Listed because recruiters ask, but the real
+        stack is knowing <em>when</em> to use
+        something&thinsp;&mdash;&thinsp;and when not to.
+      </p>
+
+      <p>
+        <strong>Languages &amp; runtimes:</strong>
+        <span class="tech-tag">Golang</span>
+        <span class="tech-tag">NodeJS</span>
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">Kotlin</span>
+      </p>
+
+      <p>
+        <strong>Frameworks:</strong>
+        <span class="tech-tag">Laravel</span>
+        <span class="tech-tag">CodeIgniter</span>
+        <span class="tech-tag">Flutter</span>
+      </p>
+
+      <p>
+        <strong>Data &amp; messaging:</strong>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">MongoDB</span>
+        <span class="tech-tag">Redis</span>
+        <span class="tech-tag">Kafka</span>
+        <span class="tech-tag">RabbitMQ</span>
+        <span class="tech-tag">Socket.IO</span>
+      </p>
+
+      <p>
+        <strong>Infrastructure &amp; tools:</strong>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">GitLab</span>
+        <span class="tech-tag">Bitbucket</span>
+        <span class="tech-tag">JIRA</span>
+        <span class="tech-tag">Trello</span>
+        <span class="tech-tag">ClickUp</span>
+      </p>
+
+      <h2 id="education">Education</h2>
+
+      <p>
+        <strong>SMK Negeri 4 Bandung</strong>&thinsp;&mdash;&thinsp;Rekayasa
+        Perangkat Lunak (Software Engineering), graduated 2020. Built the
+        foundation for everything that followed.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+
+      <p>
+        Open to backend roles where systems thinking
+        matters&thinsp;&mdash;&thinsp;platform teams, distributed systems,
+        event-driven architectures, or anywhere the hard problems live below the
+        API surface. Based in Bandung, Indonesia. Reach out if that sounds like
+        your team.
+      </p>
+
+      <ul class="contact-list">
+        <li><a href="mailto:zeptian15@gmail.com">Email</a></li>
+        <li>
+          <a href="https://github.com/zeptian15" rel="noopener">GitHub</a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/zeptian15" rel="noopener"
+            >LinkedIn</a
+          >
+        </li>
+      </ul>
+    </article>
+
+    <footer class="foot-stmt">
+      <p class="foot-stmt__line">
+        Systems that stay up. Teams that ship with confidence.
+      </p>
+      <div class="foot-stmt__meta">
+        <span class="wordmark">Septian Ricky Maulana</span>
+        <span>&copy; 2026</span>
+      </div>
+    </footer>
+  </body>
+</html>
